@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Seatwork 2</title>
+</head>
+<body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background: beige;
+        }
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h3 style="text-align:center;">Intramurals 2026</h3>
+
+<p>Are you registered online?</p>
+<input type="radio" id="regYes" name="register"> Yes
+<input type="radio" id="regNo" name="register"> No
+
+<p>Do you have a medical clearance?</p>
+<input type="radio" id="medYes" name="medical"> Yes
+<input type="radio" id="medNo" name="medical"> No
+
+<p>Grade Level and Section</p>
+<select id="grade">
+    <option value="7">Grade 7</option>
+    <option value="8">Grade 8</option>
+    <option value="9">Grade 9</option>
+    <option value="10">Grade 10</option>
+</select>
+
+<select id="section">
+    <option value="Emerald">Emerald</option>
+    <option value="Ruby">Ruby</option>
+    <option value="Sapphire">Sapphire</option>
+</select>
+
+<br><br>
+<button onclick="signUp()">Sign Up</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+function signUp() {
+    let result = document.getElementById("result");
+    let grade = Number(document.getElementById("grade").value);
+    let section = document.getElementById("section").value;
+
+    let registered = "";
+    let medical = "";
+
+    if (document.getElementById("regYes").checked) {
+        registered = "yes";
+    } else if (document.getElementById("regNo").checked) {
+        registered = "no";
+    } else {
+        result.innerHTML = "WARNING: Please answer the registration form first!";
+        return;
+    }
+
+    if (document.getElementById("medYes").checked) {
+        medical = "yes";
+    } else if (document.getElementById("medNo").checked) {
+        medical = "no";
+    } else {
+        result.innerHTML = "WARNING: Please answer the medical clearance question first!";
+        return;
+    }
+
+    if (registered !== "yes") {
+        result.innerHTML = "WARNING: Please answer the register online form first!";
+    } else if (medical !== "yes") {
+        result.innerHTML = "WARNING: Please secure a medical clearance first!";
+    } else if (grade === 7) {
+        result.innerHTML = "Congratulations!<br>Grade 7 - " + section +
+            "<br>You are part of the Yellow Tigers!";
+    } else if (grade === 8) {
+        result.innerHTML = "Congratulations!<br>Grade 8 - " + section +
+            "<br>You are part of the Green Hornets!";
+    } else if (grade === 9) {
+        result.innerHTML = "Congratulations!<br>Grade 9 - " + section +
+            "<br>You are part of the Blue Bears!";
+    } else if (grade === 10) {
+        result.innerHTML = "Congratulations!<br>Grade 10 - " + section +
+            "<br>You are part of the Red Bulldogs!";
+    }
+}
+</script>
+
+    <script type="py" src="main.py"></script>
+</body>
+</html>
